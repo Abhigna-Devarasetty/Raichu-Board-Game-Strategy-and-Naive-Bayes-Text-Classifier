@@ -21,3 +21,32 @@ Since pichu can only move diagonally we have written a successor function which 
 
 Goal State: The Goal state is a state in which a player captures all the pieces of the other player.
 
+
+## Truth be Told
+
+### Problem Statement: 
+Many practical problems involve classifying textual objects — documents, emails, sentences, tweets, etc. —into two specific categories —spam vs nonspam, important vs unimportant, acceptable vs inappropriate, etc. Naive Bayes classifiers are often used for such problems. They often use a bag-of-words model, which means that each object is represented as just an unordered “bag” of words, with no information about the grammatical structure or order of words in the document. Using this clasifier we need to classify reviews into faked or legitimate, for 20 hotels in Chicago from the given data sets
+
+### Approach: 
+
+Initially we cleaned the text in the given data set using string translate, regex functions and sets. to get only the text and remove the charecters and any other unuseful information. Then from nltk we used the corpus english words to get the stop words. We've also tried to give teh stop words manually which didn't improve the accuracy that much. Then we tried doing the lemmatization to get the base root word with out loosing any information even this didn't improve the accuracy that much. But at this point we've considered the stop words from nltk and went further.
+
+Once the text is clear then we moved to calculating the posterior probabilities for two classes truthful and deceptive. In this process first we calculated the prior probabilies for the classes that is deceptive/total length and likewise for truthful. So step 1 is done. Now we move to step 2: where we calculated the likehood probabilities for the words given classes using the dictionaries. For example P(poor/ truthful) is calculated based on occurences of poor in truth divided by number of words in truthful here to avaoid the case of no word poor we did smoothing by adding a positive value of 1 in numerator and denomenator. and finally mutiplied this with priors of respectives class. 
+
+Lastly we compare this values of posterior of truth with posterior of false based on this we will be appending the label to test data.
+
+Finally got at accuracy of 58%
+
+### References
+
+* https://monkeylearn.com/blog/practical-explanation-naive-bayes-classifier/
+* https://medium.com/@rangavamsi5/na%C3%AFve-bayes-algorithm-implementation-from-scratch-in-python-7b2cc39268b9
+* https://leasetruk.medium.com/naive-bayes-classifier-with-examples-7b541f9ffedf
+* https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/
+* https://jaimin-ml2001.medium.com/stemming-lemmatization-stopwords-and-n-grams-in-nlp-96f8e8b6aa6f
+
+
+
+
+
+
