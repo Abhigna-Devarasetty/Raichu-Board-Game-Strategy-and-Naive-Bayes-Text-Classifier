@@ -12,7 +12,7 @@ def board_to_string(board,N):
 def board_conversion(board,N):
     list_board = []
     for i in range(0,len(board),N):
-        list_board.append(board[i:i+N])
+        list_board.append([ char for char in board[i:i+N]])
     return list_board
 
 def finding_successor_function(board):
@@ -393,6 +393,7 @@ def raichu_count(board, raichu, row_value, column_value):
     return top + bottom + left + right + top_left + top_right + bottom_left + bottom_right
 
 def successor_of_pichu(board, pichu, row_value, column_value):
+    print("in pichu dsjknf")
     newboard = copy.deepcopy(board)
     pichu_succ_list = []
     
@@ -529,6 +530,7 @@ def successor_of_pichu(board, pichu, row_value, column_value):
 
 
 def successor_of_pikachu(board, pikachu, row_value, column_value):
+    print("in pikachuhhuuu")
     top = 0
     bottom = 0
     left = 0
@@ -716,7 +718,7 @@ def successor_of_pikachu(board, pikachu, row_value, column_value):
 
 
 def successor_of_raichu(board, raichu, row_value, column_value):
-    
+    print("in raichuuu")
     raichu_succ_list = []
     newboard = copy.deepcopy(board)
 
