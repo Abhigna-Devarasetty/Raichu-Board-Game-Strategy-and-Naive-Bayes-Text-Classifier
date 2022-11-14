@@ -46,10 +46,10 @@ Finally got at accuracy of 81.50%
 
 ### References
 
-* [REf-1]https://jaimin-ml2001.medium.com/stemming-lemmatization-stopwords-and-n-grams-in-nlp-96f8e8b6aa6f
-* [REf-2]https://monkeylearn.com/blog/practical-explanation-naive-bayes-classifier/
-* [REf-3]https://medium.com/@rangavamsi5/na%C3%AFve-bayes-algorithm-implementation-from-scratch-in-python-7b2cc39268b9
-* [REf-4]https://leasetruk.medium.com/naive-bayes-classifier-with-examples-7b541f9ffedf
-* [REf-5]https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/
+* [REf-1](https://jaimin-ml2001.medium.com/stemming-lemmatization-stopwords-and-n-grams-in-nlp-96f8e8b6aa6f)
+* [REf-2](https://monkeylearn.com/blog/practical-explanation-naive-bayes-classifier/)
+* [REf-3](https://medium.com/@rangavamsi5/na%C3%AFve-bayes-algorithm-implementation-from-scratch-in-python-7b2cc39268b9)
+* [REf-4](https://leasetruk.medium.com/naive-bayes-classifier-with-examples-7b541f9ffedf)
+* [REf-5](https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/)
 
 
