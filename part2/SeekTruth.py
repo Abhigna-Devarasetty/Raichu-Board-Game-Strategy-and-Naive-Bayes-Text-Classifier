@@ -18,12 +18,12 @@ def pre_processing(input):
     stopwords = nltk.corpus.stopwords.words('english')
     #table = str.maketrans(dict.fromkeys(string.punctuation))
     #input = input.translate(table)
-    #input = re.sub('[^a-zA-Z\s]+', '', input)
-    #input = re.sub(' +', ' ', input)
+    input = re.sub('[^a-zA-Z\s]+', '', input)
+    input = re.sub(' +', ' ', input)
     input = input.lower()
     input = input.split()
     input=[word for word in input if not word in stopwords] 
-    #input = [wordnet_lemmatizer.lemmatize(word) for word in input]           
+    input = [wordnet_lemmatizer.lemmatize(word) for word in input]           
     input = ' '.join(input)
     return input
 
@@ -91,9 +91,26 @@ def wordOccurance_labels (data):
         decptive_words += decptive_dict[i]
     for i in truthful_dict:
         truthful_words += truthful_dict[i]
+    #print (decptive_dict)
     
 
     return decptive_dict,truthful_dict,decptive_words, truthful_words 
+
+def prior_2(decptive_dict,truthful_dict,deceptive_words,truthful_words):
+    total_single_words= deceptive_words+truthful_words
+    total_respective_dict = {}
+    for i in decptive_dict:
+        respective_word = decptive_dict[i]
+        if i in truthful_dict:
+            respective_word= respective_word+ truthful_dict[i]
+        total_respective_dict[i]= respective_word/total_single_words
+        
+    for i in truthful_dict:
+        if i not in total_respective_dict:
+            respective_word = truthful_dict[i]
+            total_respective_dict[i]= respective_word/total_single_words
+    return total_respective_dict
+
 
 
 
@@ -116,6 +133,7 @@ def classifier(train_data, test_data):
     words_training= total_words(train_data)
     decp_dict, truth_dict, decptive_words,truthful_words= wordOccurance_labels(train_data)
     #print("asdas",decp_dict,truth_dict)
+    total_respective_dict = prior_2(decp_dict,truth_dict,decptive_words,truthful_words)
 
 
     for i in range(len(test_data["objects"])):
@@ -123,11 +141,11 @@ def classifier(train_data, test_data):
         posterior_decptive_prob=1
         for j in test_data["objects"][i].split():
             if j in truth_dict and truth_dict[j] >0:
-                posterior_truth_prob += ((truth_dict[j]+1)/(truthful_words+1))*prior_probobilities["truthful"]
+                posterior_truth_prob += (((truth_dict[j]+1)/(truthful_words+1))*prior_probobilities["truthful"])/ total_respective_dict[j]
             else:
                 posterior_truth_prob += (1/(truthful_words+1))*prior_probobilities["truthful"]
             if j in decp_dict and decp_dict[j]>0:
-                posterior_decptive_prob += ((decp_dict[j]+1)/(decptive_words+1))*prior_probobilities["deceptive"]
+                posterior_decptive_prob += (((decp_dict[j]+1)/(decptive_words+1))*prior_probobilities["deceptive"])/ total_respective_dict[j]
             else:
                 posterior_decptive_prob += (1/(decptive_words+1))*prior_probobilities["deceptive"]
         if posterior_truth_prob> posterior_decptive_prob:
