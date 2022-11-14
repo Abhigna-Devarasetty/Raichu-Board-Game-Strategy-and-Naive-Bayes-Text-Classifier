@@ -24,9 +24,17 @@ We written successor function for pichu, Pickachu and also Raichu.
 
 Since pichu can only move diagonally we have written a successor function which returns all the possible moves. Similarly in the case of pikachu since it can only move forward, left or right we have written a successor function with those constraints and returned all the possible moves. In the case of Raichu, as it can basically move in all directions we wrote a successor function which also considers some constraints like if the square is empty or not and also since it can  jump over pichu, pikachu and also raichu we considered those while building our successor function and then returned all the possible moves for raichu.
 
+### Heuristic
+
+We have come up with two heauristics for this problem. Both return the counts for where as in the first we are giving the weights for the respective move based on the moves of the pices. second one is simple count. for which we were getting 1.77 as the value at the end
+
 # Goal State
 The Goal state is a state in which a player captures all the pieces of the other player.
 
+# Reference 
+
+* [Ref-1](https://stackoverflow.com/questions/33644353/better-heuristic-function-for-a-game-ai-minimax)
+* [Ref-2](https://github.com/njmarko/alpha-beta-pruning-minmax-checkers)
 
 ## Truth be Told
 
