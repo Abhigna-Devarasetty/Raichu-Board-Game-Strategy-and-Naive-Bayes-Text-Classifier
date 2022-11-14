@@ -374,6 +374,7 @@ def raichu_count(board, raichu, row_value, column_value):
     return top + bottom + left + right + top_left + top_right + bottom_left + bottom_right
 
 def successor_of_pichu(board, pichu, row_value, column_value):
+    print("in pichu dsjknf")
     newboard = copy.deepcopy(board)
     successor_pichu = []
     
