@@ -1,5 +1,3 @@
-# savinn-vdevaras-ddevara
-
 ## Raichu
 
 ### Problem Statement
